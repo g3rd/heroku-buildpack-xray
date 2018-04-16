@@ -8,8 +8,6 @@ log() {
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
-DPKG_DIR=$BUILD_DIR/.dpkg
-DPKG_CACHE_DIR=$CACHE_DIR/dpkg/cache
 XRAY_DOWNLOAD_LINK="https://s3.dualstack.us-east-2.amazonaws.com/aws-xray-assets.us-east-2/xray-daemon/aws-xray-daemon-linux-2.x.zip"
 
 mkdir -p $CACHE_DIR
@@ -25,10 +23,12 @@ unzip aws-xray-daemon-linux-2.x.zip
 chmod +x xray
 cp $CACHE_DIR/xray $BUILD_DIR/bin/xray
 
+echo $BUILD_DIR
+
 log "Creating .profile.d script..."
 cat > $BUILD_DIR/.profile.d/001-xray-daemon.sh << EOF
 #!/bin/sh
-
+echo "Running XRay"
 $BUILD_DIR/bin/xray -o -n us-east-1 &
 EOF
 
