@@ -22,7 +22,6 @@ wget -nc $XRAY_DOWNLOAD_LINK -P $CACHE_DIR
 log "Extracting X-Ray daemon executable..."
 cd $CACHE_DIR
 unzip aws-xray-daemon-linux-2.x.zip
-mv aws-xray-daemon-linux-2.x/xray .
 chmod +x xray
 cp $CACHE_DIR/xray $BUILD_DIR/bin/xray
 
