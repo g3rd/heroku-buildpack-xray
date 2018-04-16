@@ -29,7 +29,7 @@ log "Creating .profile.d script..."
 cat > $BUILD_DIR/.profile.d/001-xray-daemon.sh << EOF
 #!/bin/sh
 
-$HOME/bin/xray --local-mode &
+$BUILD_DIR/bin/xray --local-mode &
 EOF
 
 chmod +x $BUILD_DIR/.profile.d/001-xray-daemon.sh
